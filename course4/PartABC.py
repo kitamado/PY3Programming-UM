@@ -71,15 +71,7 @@ class WOFComputerPlayer(WOFPlayer):
 
 
     def getMove(self, category, obsuredPhrase, guessed):
-        possible_chars = []
-        if self.prizeMoney < VOWEL_COST:
-            for l in LETTERS:
-                if l not in guessed and l not in 'AEIOU':
-                    possible_chars.append(l)
-        else:
-            for l in LETTERS:
-                if l not in guessed:
-                    possible_chars.append(l)
+        possible_chars = self.getPossibleLetters(guessed)
         if possible_chars == []:
             return 'pass'
         
